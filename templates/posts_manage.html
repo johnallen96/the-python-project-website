@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Projects</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<div>
+    <h1 style="display:inline">Managing Projects</h1>
+    <a style="display:inline" class="btn btn-primary float-end" href="/posts/new">+ New Post</a>
+</div>
+
+<a href="{{ url_for('logout') }}">Logout</a>
+
+<hr>
+
+{% for post in posts %}
+<br>
+
+<h2>{{ post.title }}</h2>
+
+<h5>{{ post.smalldesc }}</h5>
+
+<small>Published on {{ post.date_posted.strftime("%d/%m/%Y %H:%M:%S") + ' AEST' }}</small>
+
+<br>
+<br>
+
+<p style="white-space: pre-wrap;">{{ post.content }}</p>
+<a href="{{ post.link }}"><p style="white-space: pre-wrap;">See Project Code</p></a>
+<a class="btn btn-warning" href='/posts/edit/{{post.id}}'>Edit</a>
+<a class="btn btn-danger" href='/posts/delete/{{post.id}}'>Delete</a>
+
+<hr>
+{% endfor%}
+
+{% endblock %}

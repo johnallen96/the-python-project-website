@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Home</title>
+
+<style>
+    #key_projects {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #key_projects td,
+    #key_projects th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #key_projects tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #key_projects tr:hover {
+        background-color: #ddd;
+    }
+
+    #key_projects th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+
+    #author {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #author_name {
+        padding: 17px 0;
+    }
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+<br>
+
+<br>
+<div id="author">
+    <!-- <h1 id="author_name">The Python Project - Self-learning Python Development</h1> -->
+    <h1 id="author_name"><code>Print("Home Page")</code></h1>
+    <a id='author_image' class="navbar-brand" href="https://www.linkedin.com/in/jallen96/"><img src="{{ url_for('static', filename='images/author_photo.png') }}"></img></a>
+</div>
+<br>
+
+<div>
+    <div class="bg-light p-5 rounded">
+        <div class="col-sm-8 mx-auto">
+            <p>
+                <h4>Welcome to a portfolio all built in Python</h4>
+            </p>
+
+            <p>The python project is a digital code portfolio created by data engineer and developer, John Allen. <br>
+                All projects featured on the site are written in <code>Python</code> code, including the website itself. 
+            </p>
+            
+            <p>
+                Everything links to github and you can check out all projects by the link below. Alternatively, see key projects below for some highlights. Enjoy!
+            </p>
+                <a class="btn btn-primary" href="/posts" style="text-decoration:none; color: white;" role="button">Go To
+                    Projects »</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div>
+    <h2>Key Projects</h2>
+    <br>
+    <!-- <table style="table-layout: fixed; width: 100%; border: 1px solid black;"> -->
+    <table id="key_projects">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Content</th>
+            <th>Created On</th>
+        </tr>
+        {% for kpost in kposts %}
+        <tr>
+            <td><a href='{{ kpost.link }}' sty>{{ kpost.title }}</a></td>
+            <td href='#'>{{ kpost.smalldesc }}</td>
+            <td href='#'>{{ kpost.content }}</td>
+            <td href='#'>{{ kpost.date_posted.strftime("%d/%m/%Y %H:%M:%S") + ' AEST' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

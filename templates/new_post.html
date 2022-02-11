@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>New Project Entry</title> 
+{% endblock %}
+
+{% block body %}
+<br>
+<h1>New Project</h1> 
+
+    <hr>
+    <br>
+    <h2>New Project Entry:</h2>
+    <br>
+    <form action='/posts' method='POST'>
+        <!-- Title  -->
+        <label for="title">Title:</label>
+        <input class="form-control" type="text" name='title' id='title' placeholder="Enter Title" aria-label="Enter Title">
+        <br>
+        <!-- Sub Title -->
+        <label for="smalldesc">Subtitle:</label>
+        <input class="form-control" type="text" name='smalldesc' id='smalldesc' placeholder="Enter Subtitle" aria-label="Enter Subtitle">
+        <br>
+        <!-- Content -->
+        <label for="content">Content:</label>
+        <textarea class="form-control" name='content' id="content" placeholder="Enter Content" aria-label="Enter Content" rows="3"></textarea>
+        <br>
+        <!-- Link -->
+        <label for="link">Link:</label>
+        <input class="form-control" type="text" name='link' id='link' placeholder="Enter Link" aria-label="Enter Link">
+        <br>
+        <!-- Key Project -->
+        <label class="form-check-label" for="key_project">Key Project:</label>
+        <input class="form-check-input" type="hidden" name="key_project" id="key_project" value="0"><input class="form-check-input" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
+
+        <br>
+        <br>
+        <input type='submit' value='Post'>
+    </form>
+    <hr>
+{% endblock %}

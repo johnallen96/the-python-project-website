@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Edit Project Entry</title> 
+{% endblock %}
+
+{% block body %}
+<br>
+<h1>Editing Project</h1> 
+
+    <hr>
+    <br>
+    <h2>Edit Project Entry:</h2>
+    <br>
+    <form action='/posts/edit/{{ post.id }}' method='POST'>
+        <!-- Title:  -->
+        <label for="title">Title:</label>
+        <input class="form-control" type="text" name='title' id='title' value="{{post.title}}">
+        <br>
+        <!-- Sub Title -->
+        <label for="smalldesc">Subtitle:</label>
+        <input class="form-control" type="text" name='smalldesc' id='smalldesc' value="{{post.smalldesc}}">
+        <br>
+        <!-- Content -->
+        <label for="content">Content:</label>
+        <textarea class="form-control" name='content' id="content" rows="3">{{post.content}}</textarea>
+        <br>
+
+        <!-- Link -->
+        <label for="link">Link:</label>
+        <input class="form-control" type="text" name='link' id='link' value="{{post.link}}">
+        <br>
+
+        <!-- Key Project -->
+        <label class="form-check-label" for="key_project">Key Project:</label>
+
+        {% if post.key_project == '1' %}
+            <input class="form-check-input" type="hidden" name="key_project" id="key_project" value="1"><input class="form-check-input" type="checkbox" onclick="this.previousSibling.value=0-this.previousSibling.value" checked>
+        {% else %}
+            <input class="form-check-input" type="hidden" name="key_project" id="key_project" value="0"><input class="form-check-input" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
+        {% endif %}
+
+        <br>
+        <br>
+
+        <input type='submit' value='Save'>
+    </form>
+    <hr>
+{% endblock %}

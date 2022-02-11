@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Projects</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<div>
+    <h1 style="display:inline">All Projects</h1>
+    <a style="display:inline" class="btn btn-primary float-end disabled" href="/posts/new">+ New Post</a>
+</div>
+<hr>
+
+{% for post in posts %}
+<br>
+
+<h2>{{ post.title }}</h2>
+
+<h5>{{ post.smalldesc }}</h5>
+
+<small>Published on {{ post.date_posted.strftime("%d/%m/%Y %H:%M:%S") + ' AEST' }}</small>
+
+<br>
+<br>
+
+<p style="white-space: pre-wrap;">{{ post.content }}</p>
+<a href="{{ post.link }}"><p style="white-space: pre-wrap;">See Project Code</p></a>
+<a class="btn btn-warning disabled" href='/posts/edit/{{post.id}}'>Edit</a>
+<a class="btn btn-danger disabled" href='/posts/delete/{{post.id}}'>Delete</a>
+
+<hr>
+{% endfor%}
+
+{% endblock %}
